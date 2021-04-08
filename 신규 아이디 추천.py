@@ -9,25 +9,28 @@ def solution(new_id):
             new_id2+=id
         
     #3
-    new_id3 = new_id2.replace('..',".").replace("..",'.')
+    while '..' in new_id2:
+        new_id2 = new_id2.replace('..', '.')
     
     #4
-    new_id4 = new_id3.strip(".")
+    new_id = new_id2.strip(".")
     
     #5
-    new_id5 = new_id4.replace(" ",'a')
+    if len(new_id) == 0:
+        new_id = new_id.replace("",'a')
     
     #6
-    if len(new_id5) > 16:
-        new_id6 = new_id5[:15]
+    if len(new_id) > 15:
+        new_id = new_id[:15]
+        new_id = new_id.strip(".")
     else:
-        new_id6 = new_id5
+        new_id = new_id
         
     #7
-    if len(new_id6) <= 2:
+    if len(new_id) <= 2:
         while True:
-            new_id6 = new_id6 + new_id6[-1]
-            if len(new_id6) >= 3:
+            new_id = new_id + new_id[-1]
+            if len(new_id) >= 3:
                 break
         
-    return new_id6
+    return new_id
